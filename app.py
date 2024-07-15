@@ -198,5 +198,10 @@ if st.button("Predict", type="primary"):
     result = decode_label(predicted_status)
 
     # show the result
-    st.success(f"Predicted status is: {result}")
+    if result == "Enrolled":
+        return st.success(f"Predicted status is: {result}", icon="🔥")
+    elif result == "Dropout":
+        return st.error(f"Predicted status is: {result}", icon="🚨")
+    else:
+        return st.info(f"Predicted status is: {result}")
 
