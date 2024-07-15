@@ -186,9 +186,9 @@ def show_prediction(prediction):
     if prediction == 0:
         return st.info(f"Predicted status is: Enrolled")
     elif prediction == 1:
-        return st.success(f"Predicted status is: {result}", icon="🔥")
+        return st.success(f"Predicted status is: Graduated", icon="🔥")
     else:
-        return st.error(f"Predicted status is: {result}", icon="🚨")
+        return st.error(f"Predicted status is: Dropout", icon="🚨")
 
 # show the result
 if st.button("Predict", type="primary"):
