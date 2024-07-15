@@ -182,26 +182,18 @@ def encode_course(course):
 user_input['Course'] = user_input['Course'].apply(encode_course)
 
 # decode label
-def decode_label(prediction):
+def show_prediction(prediction):
     if prediction == 0:
-        return "Enrolled"
+        return st.info(f"Predicted status is: Enrolled")
     elif prediction == 1:
-        return "Graduated"
+        return st.success(f"Predicted status is: {result}", icon="🔥")
     else:
-        return "Dropout"
+        return st.error(f"Predicted status is: {result}", icon="🚨")
 
 # show the result
 if st.button("Predict", type="primary"):
     # make prediction
     predicted_status = model.predict(user_input)
     predicted_status = predicted_status[0]
-    result = decode_label(predicted_status)
-
-    # show the result
-    if result == "Graduated":
-        return st.success(f"Predicted status is: {result}", icon="🔥")
-    elif result == "Dropout":
-        return st.error(f"Predicted status is: {result}", icon="🚨")
-    else:
-        return st.info(f"Predicted status is: {result}")
+    result = show_prediction(predicted_status)
 
