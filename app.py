@@ -181,7 +181,7 @@ def encode_course(course):
     
 user_input['Course'] = user_input['Course'].apply(encode_course)
 
-# decode label
+# decode label and show the prediction result
 def show_prediction(prediction):
     if prediction == 0:
         return st.info(f"Predicted status is: Enrolled")
